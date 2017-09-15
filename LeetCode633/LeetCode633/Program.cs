@@ -10,31 +10,25 @@ namespace LeetCode633
     {
         public static bool JudgeSquareSum(int c)
           {
-            int a = -1;
+            int a = 0;
             double h = 1;
             int intb = 0;
             double b = 0;
 
-            do
+            while (a * a <= c / 2) 
             {
-                a++;
                 b = Math.Sqrt((double)(c - a * a));
                 intb = (int)(b);
                 h = b - intb;
-            }
-            while (a * a <= c / 2 && h != 0);
-
-
-            if ((a * a + intb * intb) == c)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-
+                if (h == 0)
+                {
+                    return true;
+                }
+                a++;
+            };
+            
+            return false;
+            
         }
         static void Main(string[] args) 
         {
