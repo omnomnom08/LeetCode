@@ -12,26 +12,32 @@ namespace LeetCode557
         {
             string unS;
             int k = -1;
+            int NewIndex;
             char [] str = s.ToCharArray();
+
             for (int i = 0; i < s.Length; i++)
             {
-                int NewIndex = s.IndexOf(" ", i) + k - i;
-              //  Console.WriteLine("PROBEL");
-              //  Console.WriteLine(s.IndexOf(" ", i));
-                if (NewIndex<-1)
+                int SpaceInd = s.IndexOf(" ", i);
+
+                if (SpaceInd < 0)
                 {
-                    NewIndex =  s.Length - i + s.LastIndexOf(" ");                  
+                    NewIndex = s.Length - i + s.LastIndexOf(" ");
+                }
+                else
+                {
+                    NewIndex = SpaceInd + k - i;
                 };
-                if (i == s.IndexOf(" ", i))
+        
+                if (i == SpaceInd)
                 {
                     NewIndex = i;
                     k = i;
                 }
-             //   Console.WriteLine("NEWINDEX");
-             //   Console.WriteLine(NewIndex);
+         
                 s.CopyTo(i, str, NewIndex, 1);
                 
             };
+
             unS = String.Concat<char>(str);
          
             return (unS);
